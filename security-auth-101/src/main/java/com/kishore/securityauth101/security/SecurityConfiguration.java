@@ -29,6 +29,9 @@ public class SecurityConfiguration {
 
 		// enable oauth2 resource sever for JWT
 		http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+		
+		// enable frame for h2-console(only for development purpose)
+		http.headers().frameOptions().sameOrigin();
 
 		return http.build();
 	}
