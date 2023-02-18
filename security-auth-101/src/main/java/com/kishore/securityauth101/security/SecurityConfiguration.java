@@ -13,7 +13,12 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		// authenticate every requests
-		http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+		http.authorizeHttpRequests(
+				auth -> 
+					auth
+//					.requestMatchers("/users/**").hasRole("USER") //check later
+					.anyRequest().authenticated()
+					);
 
 		// disable session
 		http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
